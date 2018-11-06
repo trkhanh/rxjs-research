@@ -22,12 +22,12 @@ subject.subscribe(
 
 function getProducts(url) {
     var subject;
-    return Rx.Observable.create(function (observer) {
+    return Rx.Observable.create(function (observer) { //return Observable sequence
         if (!subject) {
             subject = new Rx.AsyncSubject();
             Rx.DOM.get(url).subscribe(subject);
         }
-        return subject.subscribe(observer);
+        return subject.subscribe(observer); 
     });
 }
 var products = getProducts('/products');

@@ -28,3 +28,16 @@ s.next('Our mes #2');
 setTimeout(() => {
     s.complete();
 }, 1000)
+
+
+// Output:
+// ❮ onNext: Our message #1
+// onNext: Our message #2
+// onNext: Interval message #0
+// onNext: Interval message #1
+// onNext: Interval message #2
+
+// Subject.subscribeTo(source)
+source.subscribe(subject)
+subject.subscribe(new Observer)
+//subject behaves as an Observable
