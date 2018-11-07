@@ -1,4 +1,5 @@
-//If the horse running is source of data then each 1000ms we will scan for new pace of horse and count agvPace
+//If the horse running is source of data then each 1000ms
+// we will scan for new pace of horse and count agvPace
 var avgOfHorse = Rx.Observable.interval(1000)
     .scan(function (prev, cur) {
         return {
