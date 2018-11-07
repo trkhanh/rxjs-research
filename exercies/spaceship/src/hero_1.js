@@ -1,8 +1,7 @@
 var HERO_Y = canvas.height - 30;
 var mouseMove = Rx.Observable.fromEvent(canvas, 'mousemove');
 var SpaceShip = mouseMove
-
-map(function (event) {
+    .map(function (event) {
         return {
             x: event.clientX,
             y: HERO_Y
@@ -23,7 +22,27 @@ function drawTriangle(x, y, width, color, direction) {
     ctx.fill();
 }
 
+function paintSpaceShip(x, y) {
+    drawTriangle(x, y, 20, '#ff0000', 'up');
+}
 
 function paintSpaceShip(x, y) {
     drawTriangle(x, y, 20, '#ff0000', 'up');
-    }
+}
+
+function renderScene(actors) {
+    paintStars(actors.stars);
+    paintSpaceShip(actors.spaceship.x, actors.spaceship.y);
+}
+
+var Game = Rx.Observable
+    .combineLatest(
+        StarStream, SpaceShip,
+        function (stars, spaceship) {
+            return {
+                stars: stars,
+                spaceship: spaceship
+            };
+        });
+
+Game.subscribe(renderScene);

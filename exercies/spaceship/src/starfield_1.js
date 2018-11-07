@@ -34,6 +34,4 @@ let StarStream = Rx.Observable.range(1, STAR_NUMBER)
                 start.y += 3 // move start
             })
         })
-    }).subscribe(startArray=>{
-        paintStars(startArrayt)
-    })
+    });
