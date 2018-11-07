@@ -1,8 +1,4 @@
-let canvas = document.createElement('canvas');
-let ctx = canvas.getContext("2d");
-document.body.appendChild(canvas);
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
 
 
 function paintStars(stars) {
@@ -14,9 +10,10 @@ function paintStars(stars) {
     });
 }
 
-let SPEED = 40;
-let STAR_NUMBER = 250;
-let StarStream = Rx.Observable.range(1, STAR_NUMBER)
+var SPEED = 40;
+var STAR_NUMBER = 250;
+
+var StarStream = Rx.Observable.range(1, STAR_NUMBER)
     .map(function () {
         return {
             x: parseInt(Math.random() * canvas.width),

@@ -35,14 +35,3 @@ function renderScene(actors) {
     paintSpaceShip(actors.spaceship.x, actors.spaceship.y);
 }
 
-var Game = Rx.Observable
-    .combineLatest(
-        StarStream, SpaceShip,
-        function (stars, spaceship) {
-            return {
-                stars: stars,
-                spaceship: spaceship
-            };
-        });
-
-Game.subscribe(renderScene);
