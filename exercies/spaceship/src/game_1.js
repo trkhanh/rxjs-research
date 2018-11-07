@@ -8,4 +8,10 @@ var Game = Rx.Observable
                 enemies: enemies
             };
         });
+
+function renderScene(actors) {
+    paintStars(actors.stars);
+    paintSpaceShip(actors.spaceship.x, actors.spaceship.y);
+}
+
 Game.subscribe(renderScene);

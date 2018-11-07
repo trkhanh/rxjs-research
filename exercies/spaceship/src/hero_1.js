@@ -26,12 +26,5 @@ function paintSpaceShip(x, y) {
     drawTriangle(x, y, 20, '#ff0000', 'up');
 }
 
-function paintSpaceShip(x, y) {
-    drawTriangle(x, y, 20, '#ff0000', 'up');
-}
 
-function renderScene(actors) {
-    paintStars(actors.stars);
-    paintSpaceShip(actors.spaceship.x, actors.spaceship.y);
-}
 
