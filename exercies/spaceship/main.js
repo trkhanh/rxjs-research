@@ -212,11 +212,7 @@ function paintScore(score) {
 
 var ScoreSubject = new Rx.Subject();
 
-var score = ScoreSubject
-    // .scan(function (prev, cur) {
-    //     return prev + cur;
-    // }, 0)
-// .concat(Rx.Observable.return(0));
+var score = ScoreSubject.scan((prev, cur) => prev + cur, 0);
 
 function renderScene(actors) {
     paintStars(actors.stars);
@@ -227,15 +223,17 @@ function renderScene(actors) {
 }
 
 var Game = Rx.Observable.combineLatest(
-        [StarStream, SpaceShip, Enemies, HeroShots],
-        function (stars, spaceship, enemies, heroShots) {
+        StarStream, SpaceShip, Enemies, HeroShots, score,
+        function (stars, spaceship, enemies, heroShots, score) {
             return {
                 stars: stars,
                 spaceship: spaceship,
                 enemies: enemies,
-                heroShots: heroShots
-            };
-        })
+                heroShots: heroShots,
+                score: score
+            }
+        }
+    )
     .sample(SPEED)
     .takeWhile(function (actors) {
         return gameOver(actors.spaceship, actors.enemies) === false;
