@@ -29,11 +29,12 @@
 
 <body>
     <div id="map"></div>
+
     <script>
         var QUAKE_URL = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/' +
             'summary/all_day.geojsonp';
 
-
+        window.Rx = Rx;
 
         function loadJSONP(url) {
             var script = document.createElement('script');
@@ -45,7 +46,7 @@
         var map = L.map('map').setView([35.524624, 138.451902], 5);
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
     </script>
-    <script src="code_v3.js"></script>
+    <script src="code_v4.js"></script>
 </body>
 
 </html>

@@ -27,11 +27,11 @@ PS> C:\User\> ./run.bash
         + If ( lastEmmit )
         -   stream 1:                  ----1----2-----3----|--->
         -   stream 2: subscribe(t=t/2)           ⇫----3----|---> 
-        -   stream 3: subscribe(t=t)   ⇫--------------3----|--->
+        -   stream 3: subscribe(t=0)   ⇫--------------3----|--->
         + Else
         -   stream 1:                  ----1----2-----X----|--->
         -   stream 2: subscribe(t=t/2)           ⇫----X----|---> 
-        -   stream 3: subscribe(t=t)   ⇫--------------X----|--->
+        -   stream 3: subscribe(t=0)   ⇫--------------X----|--->
   
    -   BehaviorSubject 
         + If ( lastEmmit )
@@ -41,18 +41,20 @@ PS> C:\User\> ./run.bash
         + Else if( Observable terminates with an error)
         -   stream 1: BehaviorSubject (4)   --1---X------------|--->
         -   stream 2: subscribe(t=t/2)               ⇫----X----|---> 
-        -   stream 3: subscribe(t=t)       ⇫--4-1-X------------|--->  
+        -   stream 3: subscribe(t=0)       ⇫--4-1-X------------|--->  
+  
    -   PublishSubject
-         + If ( lastEmmit )
+        + If ( lastEmmit )
         -   stream 1:                      ----1----2-----3----|--->
         -   stream 2: subscribe(t=0)        ⇫--1----2-----3----|---> 
         -   stream 3: subscribe(t=t/2)                 ⇫--3----|--->  
         + Else if( Observable terminates with an error)
         -   stream 1: BehaviorSubject (4)   --1---2------X-----|--->
         -   stream 2: subscribe(t=t/2)               ⇫---X-----|---> 
-        -   stream 3: subscribe(t=t)       ⇫--1---2------X-----|--->  
+        -   stream 3: subscribe(t=0)       ⇫--1---2------X-----|--->  
+
    -   ReplaySubject
-   -   + If ( lastEmmit )
+       + If ( lastEmmit )
         -   stream 1:                     ----1----2-----3----|--->
         -   stream 2: subscribe(t=0)       ⇫--1----2-----3----|---> 
         -   stream 3: subscribe(t=t/2)                ⇫123----|--->
@@ -60,10 +62,10 @@ PS> C:\User\> ./run.bash
         + Else if( Observable terminates with an error)
         -   stream 1: BehaviorSubject (4)   --1---2------X-----|--->
         -   stream 2: subscribe(t=t/2)               ⇫---X-----|---> 
-        -   stream 3: subscribe(t=t)       ⇫--1---2------X-----|---> 
+        -   stream 3: subscribe(t=0)       ⇫--1---2------X-----|---> 
 
 2. Could you explain core pattern of Reactive Programing?
-3. What different betweem Reactor Pattern vs Observer Pattern?
+3. What different between Reactor Pattern vs Observer Pattern?
 4. When do you use Subject and when not?     http://davesexton.com/blog/post/To-Use-Subject-Or-Not-To-Use-Subject.aspx
 5. Please explain what are  " Builder Pattern" how was that cooperate with RX?
 6. Could I call observer by “subscriber,” “watcher,” or “reactor.”?
